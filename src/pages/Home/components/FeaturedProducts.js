@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import { ProductCard } from "../../../components/Elements/ProductCard"
+import { ProductCard } from "../../../components"
 
 export const FeaturedProducts = () => {
     const [products, setProducts]=useState([]);
@@ -19,7 +19,9 @@ export const FeaturedProducts = () => {
           <h1 className="text-2xl text-center font-semibold dark:text-slate-100 mb-5 underline underline-offset-8">Featured eBooks</h1>    
           <div className="flex flex-wrap justify-center lg:flex-row">
           {products.map((product)=>(
-            <ProductCard/>
+            <ProductCard id={product.id}  key={product.id} poster={product.poster} name={product.name} price={product.price}
+                overview={product.overview}
+            />
 
           ))}
             
