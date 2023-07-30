@@ -4,11 +4,13 @@ import { FeaturedProducts } from "./components/FeaturedProducts";
 import { Faq } from "./components/Faq";
 import { Testimonials } from "./components/Testimonials";
 
+
 export const HomePage = () => {
+ 
   return (
     <main>
       <Hero />
-      <FeaturedProducts />
+       <FeaturedProducts /> 
       <Testimonials />
       <Faq />
     </main>

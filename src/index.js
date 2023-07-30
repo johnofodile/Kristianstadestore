@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { FilterProvider } from './context';
+import { ScrollToTop } from './components';
 // Here we must import the react router
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -12,7 +14,10 @@ root.render(
   <React.StrictMode>
   {/* next we embody the app component in the router */}
   <Router>
+   <FilterProvider> 
+  <ScrollToTop/>
     <App />
+     </FilterProvider> 
     </Router>
   </React.StrictMode>
 );
