@@ -8,13 +8,14 @@ export const filterReducer=(state, action)=>{
         case "PRODUCT_LIST":
             return {productList: payload.products}
             case "SORT_BY":
-            return 
+                return {...state, sortBy: payload.sortBy}
             case "RATINGS":
-                return
+                return {...state, ratings: payload.ratings}
                 case "BEST_SELLER_ONLY":
-                    return
+                    return {...state, bestSellerOnly:payload.bestSellerOnly}
                     case "ONLY_IN_STOCK":
-                        return
+                        //only in stock below comes from the initial state on the context file
+                        return {...state, onlyInStock: payload.onlyInStock}
                         case "CLEAR_FILTER":
                             return
 

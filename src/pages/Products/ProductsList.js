@@ -1,5 +1,5 @@
 
-import { ProductCard } from "../../components"
+import { ProductCard } from "../../components";
 import {FilterBar} from "./components/FilterBar";
 import {useState, useEffect} from "react";
 import {useLocation} from "react-router-dom";
@@ -11,7 +11,7 @@ import {useFilter} from '../../context';
 export const ProductsList = () => {
   //the line of code below connects to the context
   //use filter connects to a global state
-     const {productList, initialProductList} = useFilter();
+     const {products, initialProductList} = useFilter();
    
     const[show, setShow]=useState(false);
    //  const[products, setProducts]=useState([]);
@@ -25,19 +25,7 @@ export const ProductsList = () => {
         setShow(false);
       };
 
-      // useEffect(()=>{
-      //   //when using the useeffect first define the function then call it later
-      //   async function fetchProducts(){
-      //       //the code below either searches the particular 
-      //       const response=await fetch(` http://localhost:8000/products?name_like=${searchTerm ? searchTerm : ""}`);
-      //       const data=await response.json();
-      //     // setProducts(data);
-      //       //this is how we pass on data from the api
-      //       initialProductlist(data);                          
-
-
-      //   }
-      //   fetchProducts();
+      
 
       useEffect(() => {
         console.log("yes");
@@ -67,17 +55,17 @@ export const ProductsList = () => {
       <main>
           <section className="my-5">
             <div className="my-5 flex justify-between">
-              <span className="text-2xl font-semibold dark:text-slate-100 mb-5">All eBooks ({productList.length})</span>
+              <span className="text-2xl font-semibold dark:text-slate-100 mb-5">All eBooks ({products.length})</span>
               <span>
-                <button onClick={()=>setShow(!show)} id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-gray-100 rounded-lg hover:bg-gray-200 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-700" type="button"> 
-                  <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
-                </button>
+              <button onClick={() => setShow(!show)} id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-gray-100 rounded-lg hover:bg-gray-200 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-700" type="button"> 
+                <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+              </button>
               </span>            
             </div>    
   
             <div className="flex flex-wrap justify-center lg:flex-row">
             {/* product list is from the line of code slighly below the product List function */}
-            {productList.map((product)=>(
+            {products.map((product)=>(
             <ProductCard id={product.id}  key={product.id} poster={product.poster} name={product.name} price={product.price}
                 overview={product.overview} rating={product.rating}
             />
