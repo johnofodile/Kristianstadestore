@@ -85,7 +85,7 @@ export const ProductsList = () => {
               price={product.price}
               overview={product.overview}
               rating={product.rating}
-              
+              in_stock={product.in_stock}
             />
           ))}
         </div>
