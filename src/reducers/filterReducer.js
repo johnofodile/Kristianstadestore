@@ -1,27 +1,27 @@
+export const filterReducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "PRODUCT_LIST":
+      return { productList: payload.products };
+    case "SORT_BY":
+      return { ...state, sortBy: payload.sortBy };
+    case "RATINGS":
+      return { ...state, ratings: payload.ratings };
+    case "BEST_SELLER_ONLY":
+      return { ...state, bestSellerOnly: payload.bestSellerOnly };
+    case "ONLY_IN_STOCK":
+      //only in stock below comes from the initial state on the context file
+      return { ...state, onlyInStock: payload.onlyInStock };
+    case "CLEAR_FILTER":
+      return {
+        ...state,
+        onlyInStock: false,
+        bestSellerOnly: false,
+        sortBy: null,
+        ratings: null,
+      };
 
-
-
-
-export const filterReducer=(state, action)=>{
-    const {type,payload}=action;
-    switch(type){
-        case "PRODUCT_LIST":
-            return {productList: payload.products}
-            case "SORT_BY":
-                return {...state, sortBy: payload.sortBy}
-            case "RATINGS":
-                return {...state, ratings: payload.ratings}
-                case "BEST_SELLER_ONLY":
-                    return {...state, bestSellerOnly:payload.bestSellerOnly}
-                    case "ONLY_IN_STOCK":
-                        //only in stock below comes from the initial state on the context file
-                        return {...state, onlyInStock: payload.onlyInStock}
-                        case "CLEAR_FILTER":
-                            return
-
-                            default:
-            throw new Error("Unknown command: ");
-    }
-
-
-}
+    default:
+      throw new Error("Unknown command: ");
+  }
+};

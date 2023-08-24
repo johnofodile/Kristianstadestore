@@ -3,4 +3,11 @@ export {Footer} from './Layouts/Footer';
 export {ProductCard} from "./Elements/ProductCard";
 export {Rating} from "./Elements/Rating";
 export {ScrollToTop} from "./Other/ScrollToTop";
+export  {DropdownLoggedIn} from "./Elements/DropdownLoggedIn";
+
+
+export  { DropdownLoggedOut} from "./Elements/DropdownLoggedOut";
+
+
+
 export {Search} from "./sections/Search";

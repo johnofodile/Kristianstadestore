@@ -9,3 +9,7 @@ install react router too           npm i react-router-dom
 ***********************************************
 when using react router, we should use link instead of the a tag.Link is used in the header component 
 So products page has an api, featured products page has an api too
+
+
+
+***he context(PROVIDER) SHOULD BE IMPORTED AND WRAPPED IN THE INDEX.JS FILE
