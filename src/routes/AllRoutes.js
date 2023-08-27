@@ -1,8 +1,10 @@
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
 import { HomePage, ProductsList,ProductDetail,Login, Register,CartPage} from '../pages';
+import { ProtectedRoute } from './ProtectedRoute';
 
 
 export  const AllRoutes=()=>{
+  const token=false;
     return (
       <>
         <Routes>
@@ -11,7 +13,7 @@ export  const AllRoutes=()=>{
             <Route path="products/:id" element={<ProductDetail/>}/>
             <Route path="login" element={<Login/>}/>
             <Route path="register" element={<Register/>}/>
-            <Route path="cart" element={<CartPage/>}/>
+            <Route path="cart" element={<ProtectedRoute><CartPage/></ProtectedRoute>}/>
         </Routes>
       </>
     )
