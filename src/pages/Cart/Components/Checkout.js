@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 export const Checkout = ({ setCheckout }) => {
-  const { cartList, total } = useCart();
+  const {  total,cartList } = useCart();
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -20,8 +20,48 @@ export const Checkout = ({ setCheckout }) => {
       const data = await response.json();
       setUser(data);
     }
-    getUser();
+    getUser();    
   }, []);
+
+//  
+
+async function handleOrderSubmit(event) {
+  event.preventDefault();
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  const order = {
+    cartList: cartList,
+    total: total,
+    quantity: cartList.length,
+    user: {
+      name: user.name,
+      email: user.email,
+      id: user.id,
+    },
+  };
+  try {
+    const response = await fetch("http://localhost:8000/660/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(order), // Include the order object as the request body
+    });
+
+    if (response.ok) {
+      // Handle successful response here
+      // You can navigate to a success page or perform any other actions.
+      console.log("Order placed successfully!");
+    } else {
+      // Handle errors here
+      console.error("Error placing order.");
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+}
+
+
 
   return (
     <section>
@@ -60,7 +100,7 @@ export const Checkout = ({ setCheckout }) => {
               <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                 <i className="bi bi-credit-card mr-2"></i>CARD PAYMENT
               </h3>
-              <form className="space-y-6">
+              <form onSubmit={handleOrderSubmit} className="space-y-6">
                 <div>
                   <label
                     htmlFor="name"
@@ -73,7 +113,7 @@ export const Checkout = ({ setCheckout }) => {
                     name="name"
                     id="name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
-                    value={user.name}
+                    value={user.name  || "" }
                     disabled
                     required=""
                   />
@@ -90,7 +130,7 @@ export const Checkout = ({ setCheckout }) => {
                     name="email"
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
-                    value={user.email}
+                    value={user.email  || ""}
                     disabled
                     required=""
                   />

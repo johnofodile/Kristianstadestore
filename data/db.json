@@ -237,7 +237,36 @@
       "best_seller": true
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "cartList": [
+        {
+          "id": 10004,
+          "name": "The Complete Guide to Backend Development",
+          "overview": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+          "poster": "https://images.unsplash.com/photo-1595617795501-9661aafda72a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
+          "price": 99,
+          "in_stock": true
+        },
+        {
+          "id": 10006,
+          "name": "Frontend Fastlane Plan With Projects",
+          "overview": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+          "poster": "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
+          "price": 99,
+          "in_stock": true
+        }
+      ],
+      "total": 198,
+      "quantity": 2,
+      "user": {
+        "name": "john",
+        "email": "jayofo3@gmail.com",
+        "id": 1
+      },
+      "id": 1
+    }
+  ],
   "users": [
     {
       "email": "jayofo3@gmail.com",
