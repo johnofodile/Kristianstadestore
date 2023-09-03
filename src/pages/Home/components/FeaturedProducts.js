@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { ProductCard } from "../../../components";
-import { useCart } from "../../../context";
+
 
 export const FeaturedProducts = () => {
-  const { cartList, addToCart, removeFromCart } = useCart();
+ 
 
   const [products, setProducts] = useState([]);
   //We apply useeffect so that once the page loads we see the products

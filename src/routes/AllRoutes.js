@@ -1,10 +1,10 @@
-import {Routes, Route, Navigate} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import { HomePage, ProductsList,ProductDetail,Login, Register,CartPage,OrderPage} from '../pages';
 import { ProtectedRoute } from './ProtectedRoute';
 
 
 export  const AllRoutes=()=>{
-  const token=false;
+ 
     return (
       <>
         <Routes>
