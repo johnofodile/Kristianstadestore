@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import {useState,useEffect} from "react";
 import { Search } from '../sections/Search';
-import { DropdownLoggedOut } from '../index';
+import { DropdownLoggedOut } from '../Elements/DropdownLoggedOut';
 import { useCart} from '../../context';
 
 
