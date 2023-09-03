@@ -1,14 +1,17 @@
 import { useCart } from "../../../context";
 import { useEffect } from "react";
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 export const Checkout = ({ setCheckout }) => {
-  const {  total,cartList } = useCart();
+  const {  total,cartList, clearCart } = useCart();
   const [user, setUser] = useState({});
+  const navigate=useNavigate();
 
   useEffect(() => {
     const token = JSON.parse(sessionStorage.getItem("token"));
     const cbid = JSON.parse(sessionStorage.getItem("cbid"));
+
     async function getUser() {
       const response = await fetch(`http://localhost:8000/600/users/${cbid}`, {
         method: "GET",
@@ -23,22 +26,24 @@ export const Checkout = ({ setCheckout }) => {
     getUser();    
   }, []);
 
-//  
+ 
 
 async function handleOrderSubmit(event) {
   event.preventDefault();
   const token = JSON.parse(sessionStorage.getItem("token"));
-  const order = {
-    cartList: cartList,
-    total: total,
-    quantity: cartList.length,
-    user: {
-      name: user.name,
-      email: user.email,
-      id: user.id,
-    },
-  };
-  try {
+ 
+  
+  try{
+    const order = {
+      cartList: cartList,
+      total: total,
+      quantity: cartList.length,
+      user: {
+        name: user.name,
+        email: user.email,
+        id: user.id,
+      },
+    };
     const response = await fetch("http://localhost:8000/660/orders", {
       method: "POST",
       headers: {
@@ -47,19 +52,21 @@ async function handleOrderSubmit(event) {
       },
       body: JSON.stringify(order), // Include the order object as the request body
     });
+const data=await response.json();
 
-    if (response.ok) {
-      // Handle successful response here
-      // You can navigate to a success page or perform any other actions.
-      console.log("Order placed successfully!");
-    } else {
-      // Handle errors here
-      console.error("Error placing order.");
-    }
-  } catch (error) {
-    console.error("An error occurred:", error);
-  }
+    
+  clearCart();
+  navigate("/order-summary", {state:{data: data, status:true}});
+}catch(error){
+  navigate("/order-summary", {state:{status:false}});
 }
+}
+
+
+
+
+
+
 
 
 
@@ -212,3 +219,4 @@ async function handleOrderSubmit(event) {
     </section>
   );
 };
+
