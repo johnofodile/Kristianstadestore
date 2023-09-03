@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import {useState,useEffect} from "react";
 import { Search } from '../sections/Search';
-import { DropdownLoggedOut } from '../Elements/DropdownLoggedOut';
+import { DropDown } from '../Elements/DropDown';
 import { useCart} from '../../context';
 
 
@@ -44,7 +44,7 @@ if(darkMode){
                       </span>                    
                       </Link>
                       <span onClick={() => setDropDown(!dropDown)} className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"></span>
-                      {dropDown  && <DropdownLoggedOut/>}
+                      {dropDown  && <DropDown/>}
                   </div>
               </div>
           </nav>
