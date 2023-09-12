@@ -10,7 +10,7 @@ export const FeaturedProducts = () => {
   useEffect(() => {
     //when using the useeffect first define the function then call it later
     async function fetchProducts() {
-      const response = await fetch(" http://localhost:8000/featured_products");
+      const response = await fetch(`${process.env.REACT_APP_HOST}/featured_products`);
       const data = await response.json();
       setProducts(data);
     }
