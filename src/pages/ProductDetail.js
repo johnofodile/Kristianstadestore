@@ -11,7 +11,7 @@ export const ProductDetail = () => {
 
   useEffect(() => {
     async function fetchProducts() {
-      const response = await fetch(`http://localhost:8000/products/${id}`);
+      const response = await fetch(`${process.env.REACT_APP_HOST}/${id}`);
       const data = await response.json();
       setProduct(data);
     }

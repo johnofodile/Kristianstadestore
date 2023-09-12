@@ -18,7 +18,7 @@ export const Login = () => {
       headers: {"content-Type": "application/json"},
       body: JSON.stringify(authDetail)
     }
-    const response = await fetch("http://localhost:8000/login", requestOptions);
+    const response = await fetch(`${process.env.REACT_APP_HOST}/login`, requestOptions);
     const data = await response.json();
     data.accessToken ? navigate("/products") : toast.error(data);
 

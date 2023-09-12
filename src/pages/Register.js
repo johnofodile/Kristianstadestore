@@ -17,7 +17,7 @@ export const Register = () => {
       body: JSON.stringify(authDetail)
     }
 
-    const response = await fetch("http://localhost:8000/register", requestOptions);
+    const response = await fetch(`${process.env.REACT_APP_HOST}/register`, requestOptions);
     const data = await response.json();
     //if registration is succesful then there would be an access token for every data that is returned
     data.accessToken ? navigate("/products") : toast.error(data);
